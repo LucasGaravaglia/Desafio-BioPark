@@ -8,9 +8,9 @@ exports.up = (knex) => {
       .notNullable()
       .onDelete("CASCADE");
     table.integer("have_guest").default(0);
-    table.text("name_guest");
-    table.text("contact_guest");
-    table.integer("price");
+    table.text("name_guest").default("");
+    table.text("contact_guest").default("");
+    table.double("price").default(0.0);
     table.date("busy_until").default(knex.fn.now());
   });
 };

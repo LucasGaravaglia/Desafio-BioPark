@@ -41,7 +41,6 @@ module.exports = {
     const { have_guest, name_guest, contact_guest, busy_until } = req.body;
     const { id } = req.params;
     try {
-      console.log(id);
       await knex("apartments")
         .update({
           have_guest,
