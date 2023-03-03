@@ -6,6 +6,7 @@
   width: 318px;
   height: 60px;
   border-radius: 25px;
+  cursor: pointer;
 }
 
 .ButtonContainer:hover {
@@ -19,4 +20,5 @@
 .TextButton {
   color: #fff;
   font-size: 24;
+  cursor: pointer;
 }
