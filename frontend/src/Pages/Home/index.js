@@ -1,26 +1,20 @@
 import "./style.css";
 
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 
 import Button from "../../Components/Button";
 
 function Home() {
   const navigate = useNavigate();
 
-  const handlerShowBuilding = () => {
-    return navigate("/building");
-  };
-
   return (
     <div className="container">
       <div className="buttons">
-        <Button onClick={() => toast("Em desenvolvimento")}>
+        <Button onClick={() => navigate("/register-building")}>
           Novo edifício
         </Button>
-        <Button onClick={() => handlerShowBuilding()}>Mostrar edifícios</Button>
+        <Button onClick={() => navigate("/building")}>Mostrar edifícios</Button>
       </div>
-      <Toaster />
     </div>
   );
 }

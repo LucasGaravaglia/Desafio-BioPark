@@ -21,11 +21,12 @@
 #containerApartments {
   background-color: #eaeaea;
   display: flex;
-  height: 80vh;
   flex-direction: column;
   justify-content: flex-start;
-  width: 65vw;
+  height: 80vh;
+  width: 55vw;
 }
+
 #uniqueApartment {
   width: 30px;
   height: 30px;

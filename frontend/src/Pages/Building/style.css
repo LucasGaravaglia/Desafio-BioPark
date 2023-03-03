@@ -9,8 +9,8 @@
 }
 
 #buttons {
-  margin-top: 20vh;
-  height: 15rem;
+  margin-top: 10vh;
+  height: 20rem;
   flex-direction: column;
   display: flex;
   align-items: center;
