@@ -1,0 +1,27 @@
+#container {
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#buttons {
+  margin-top: 30vh;
+  height: 15rem;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#containerBack {
+  /* background-color: #00f; */
+  width: 95vw;
+  padding: 5vh;
+  display: flex;
+  align-items: flex-start;
+  /* height: 100vh; */
+}

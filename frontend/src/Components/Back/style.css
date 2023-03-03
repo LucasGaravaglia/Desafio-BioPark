@@ -1,0 +1,13 @@
+#ButtonContainer {
+  background-color: #383838;
+  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#ButtonContainer:hover {
+  background-color: #d9d9d9;
+}
