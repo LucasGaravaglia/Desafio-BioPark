@@ -1,0 +1,22 @@
+.ButtonContainer {
+  background-color: #383838;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 318px;
+  height: 60px;
+  border-radius: 25px;
+}
+
+.ButtonContainer:hover {
+  background-color: #626262;
+}
+
+.selected {
+  background-color: #626262;
+}
+
+.TextButton {
+  color: #fff;
+  font-size: 24;
+}
