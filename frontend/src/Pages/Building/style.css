@@ -1,4 +1,4 @@
-#container {
+#containerBuilding {
   width: 100vw;
   height: 100vh;
   flex-direction: column;
@@ -9,7 +9,7 @@
 }
 
 #buttons {
-  margin-top: 30vh;
+  margin-top: 20vh;
   height: 15rem;
   flex-direction: column;
   display: flex;
@@ -18,10 +18,8 @@
 }
 
 #containerBack {
-  /* background-color: #00f; */
   width: 95vw;
   padding: 5vh;
   display: flex;
   align-items: flex-start;
-  /* height: 100vh; */
 }

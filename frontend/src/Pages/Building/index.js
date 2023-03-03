@@ -25,7 +25,7 @@ function Building() {
   }, []);
 
   return (
-    <div id="container">
+    <div id="containerBuilding">
       <div id="containerBack">
         <Back onClick={() => navigate("/")} />
       </div>
