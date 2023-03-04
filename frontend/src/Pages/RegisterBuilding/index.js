@@ -31,6 +31,7 @@ function Home() {
       }
     });
     tempArray.map((d) => {
+      console.log(d);
       api.post("apartment", {
         building_id: building_id,
         number: d.number,

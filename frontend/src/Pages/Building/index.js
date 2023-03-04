@@ -33,7 +33,11 @@ function Building() {
         {buildingData.map((data, key) => {
           console.log(key);
           return (
-            <Button key={key} onClick={() => navigate(`/apartment/${data.id}`)}>
+            <Button
+              className="customButtonBuilding"
+              key={key}
+              onClick={() => navigate(`/apartment/${data.id}`)}
+            >
               {data.name_building}
             </Button>
           );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Button";
 import "./style.css";
 
@@ -20,6 +20,16 @@ function DefinePrices({ numberApartments, setPriced, handlerSave }) {
       } else {
         tempArray.push({ number: d, price: defaultPrice });
       }
+      return;
+    });
+    tempArray.sort((a, b) => {
+      if (a.number > b.number) {
+        return 1;
+      }
+      if (a.number < b.number) {
+        return -1;
+      }
+      return 0;
     });
     setPriced(tempArray);
     handlerSave();

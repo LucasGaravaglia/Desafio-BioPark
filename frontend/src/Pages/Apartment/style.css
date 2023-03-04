@@ -9,13 +9,18 @@
 }
 
 #containerButtons {
-  width: 20vw;
+  width: 30vw;
   padding: 5vh;
   flex-direction: column;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.customButtonApartment {
+  margin-top: 10px;
 }
 
 #containerApartments {
@@ -23,7 +28,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 80vh;
+  height: 65vh;
   width: 55vw;
 }
 
@@ -47,4 +52,12 @@
 
 #lines {
   padding: 10px;
+}
+
+#containerApartments span {
+  user-select: none;
+}
+.divDetails {
+  display: flex;
+  flex-direction: column;
 }

@@ -11,6 +11,16 @@ import "./style.css";
 function Building() {
   const [apartmentData, setApartmentData] = useState([]);
   const [buildingData, setBuildingData] = useState([]);
+  const [selected, setSelected] = useState({
+    id: 0,
+    number: 0,
+    building_id: 0,
+    have_guest: 0,
+    name_guest: "",
+    contact_guest: "",
+    price: 0,
+    busy_until: "",
+  });
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -38,14 +48,40 @@ function Building() {
       });
   }, [id]);
 
+  const handlerDetails = (data) => {
+    setSelected(data);
+  };
+  const Details = () => {
+    let target = new Date(selected.busy_until);
+    let actual = new Date();
+    let dif = (target.getTime() - actual.getTime()) / (1000 * 60 * 60 * 24);
+    return (
+      <div className="divDetails">
+        <a>Numero do Apartamento: {selected.number}</a>
+        <a>{selected.have_guest == 1 ? "Ocupado" : "Livre"}</a>
+        <a>Preço: {selected.price}</a>
+        {selected.have_guest == 1 ? (
+          <>
+            <a>Nome do hóspede: {selected.name_guest}.</a>
+            <a>Contato do hóspede: {selected.contact_guest}.</a>
+
+            <a>Ficará livre em: {Math.floor(dif)} dias. </a>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div id="container">
       <div id="containerButtons">
         <Back style={{ width: 318 }} onClick={() => navigate("/building")} />
         {buildingData.map((data, key) => {
-          console.log(key, id, key == id);
           return (
             <Button
+              className="customButtonApartment"
               style={
                 key + 1 == id
                   ? { backgroundColor: "#626262" }
@@ -67,6 +103,7 @@ function Building() {
               return (
                 <li id="containerLi" key={key}>
                   <div
+                    onClick={() => handlerDetails(data)}
                     id="uniqueApartment"
                     style={
                       data.have_guest == 1
@@ -81,6 +118,7 @@ function Building() {
             })}
           </ul>
         </div>
+        <Details />
       </div>
       <Toaster />
     </div>
