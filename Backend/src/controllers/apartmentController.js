@@ -22,6 +22,7 @@ module.exports = {
       name_guest,
       contact_guest,
       busy_until,
+      price,
     } = req.body;
     try {
       await knex("apartments").insert({
@@ -31,6 +32,7 @@ module.exports = {
         name_guest,
         contact_guest,
         busy_until,
+        price,
       });
       return res.status(201).send();
     } catch (error) {
