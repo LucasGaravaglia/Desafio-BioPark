@@ -3,8 +3,8 @@
 ## Configuração
 
 - Necessário a instalação:
-  - Docker compose
-  - Nodejs 18.8
+  - Docker compose versão 2.1
+  - Nodejs versão 18.8
 
 No diretório do projeto em um terminal:
 
