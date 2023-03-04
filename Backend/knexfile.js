@@ -10,7 +10,7 @@ module.exports = {
       database: "building_biopark",
       user: "postgres",
       password: "1234",
-      host: "172.17.0.2",
+      host: "localhost",
       port: 5432,
     },
     migrations: {
