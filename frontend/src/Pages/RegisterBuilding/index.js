@@ -61,23 +61,27 @@ function Home() {
     <div className="containerRegisterBuilding">
       {!flag ? (
         <div className="buildingData">
-          <input
-            className="inputBuildingData"
-            placeholder="Nome do edifício"
-            value={nameBuilding}
-            onChange={(event) => {
-              setNameBuilding(event.target.value);
-            }}
-          ></input>
-          <input
-            type="number"
-            className="inputBuildingData"
-            placeholder="Quantidade de apartamentos"
-            value={numberApartments}
-            onChange={(event) => {
-              setNumberApartments(event.target.value);
-            }}
-          ></input>
+          <form>
+            <span>Nome do edifício: </span>
+            <input
+              className="inputBuildingData"
+              value={nameBuilding}
+              onChange={(event) => {
+                setNameBuilding(event.target.value);
+              }}
+            ></input>
+          </form>
+          <form>
+            <span>Quantidade de apartamentos: </span>
+            <input
+              type="number"
+              className="inputBuildingData"
+              value={numberApartments}
+              onChange={(event) => {
+                setNumberApartments(event.target.value);
+              }}
+            ></input>
+          </form>
           <Button onClick={() => handlerConfirm()}>Continuar</Button>
         </div>
       ) : (

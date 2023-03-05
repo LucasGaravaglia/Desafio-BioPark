@@ -10,13 +10,9 @@
 }
 
 #buttons {
-  margin-top: 10vh;
-  height: 25rem;
-  width: 400px;
+  height: 260px;
+  width: 350px;
   flex-direction: column;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   overflow-y: auto;
   overflow-x: hidden;
 }

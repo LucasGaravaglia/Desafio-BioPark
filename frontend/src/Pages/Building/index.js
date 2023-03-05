@@ -28,6 +28,7 @@ function Building() {
       <div id="containerBack">
         <Back onClick={() => navigate("/")} />
       </div>
+      <h1>Selecione o edifício que deseja: </h1>
       <div id="buttons">
         {buildingData.map((data, key) => {
           return (

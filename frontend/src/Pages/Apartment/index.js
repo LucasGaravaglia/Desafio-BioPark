@@ -91,7 +91,12 @@ function Building() {
         })}
       </div>
       <div>
-        <h1>Apartamentos: </h1>
+        <div className="containerTitles">
+          {" "}
+          <h1>Apartamentos: </h1>
+          <h5>Selecione o apartamento que deseja ocupar/desocupar. </h5>
+        </div>
+
         <div id="containerApartments">
           <ul id="containerUl">
             {apartmentData.map((data, key) => {
