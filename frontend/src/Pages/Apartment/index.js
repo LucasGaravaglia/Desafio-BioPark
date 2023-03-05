@@ -21,6 +21,7 @@ function Building() {
     price: 0,
     busy_until: "",
   });
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -31,48 +32,42 @@ function Building() {
         setBuildingData(res.data);
       })
       .catch((err) => {
-        toast.error("Falha ao fazer requisição.");
-        console.log(err);
+        toast.error("Falha ao fazer requisição.", err);
       });
   }, []);
 
-  useEffect(() => {
+  const requestApartments = () => {
     api
       .get(`apartment/${id}`)
       .then((res) => {
+        res.data.sort((a, b) => {
+          if (a.number > b.number) {
+            return 1;
+          }
+          if (a.number < b.number) {
+            return -1;
+          }
+          return 0;
+        });
         setApartmentData(res.data);
       })
       .catch((err) => {
         toast.error("Falha ao fazer requisição.");
-        console.log(err);
       });
+  };
+
+  useEffect(() => {
+    requestApartments();
   }, [id]);
 
   const handlerDetails = (data) => {
     setSelected(data);
   };
-  const Details = () => {
-    let target = new Date(selected.busy_until);
-    let actual = new Date();
-    let dif = (target.getTime() - actual.getTime()) / (1000 * 60 * 60 * 24);
-    return (
-      <div className="divDetails">
-        <a>Numero do Apartamento: {selected.number}</a>
-        <a>{selected.have_guest == 1 ? "Ocupado" : "Livre"}</a>
-        <a>Preço: {selected.price}</a>
-        {selected.have_guest == 1 ? (
-          <>
-            <a>Nome do hóspede: {selected.name_guest}.</a>
-            <a>Contato do hóspede: {selected.contact_guest}.</a>
 
-            <a>Ficará livre em: {Math.floor(dif)} dias. </a>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-    );
-  };
+  const dif =
+    new Date(selected.busy_until) < new Date()
+      ? 0
+      : (new Date(selected.busy_until) - new Date()) / (1000 * 60 * 60 * 24);
 
   return (
     <div id="container">
@@ -107,8 +102,12 @@ function Building() {
                     id="uniqueApartment"
                     style={
                       data.have_guest == 1
-                        ? { backgroundColor: "#3f3" }
-                        : { backgroundColor: "#f33" }
+                        ? data.id == selected.id
+                          ? { backgroundColor: "#555" }
+                          : { backgroundColor: "#f33" }
+                        : data.id == selected.id
+                        ? { backgroundColor: "#555" }
+                        : { backgroundColor: "#3f3" }
                     }
                   >
                     <span className="textApartment">{data.number}</span>
@@ -118,7 +117,96 @@ function Building() {
             })}
           </ul>
         </div>
-        <Details />
+        <div className="containerDetailsConfig">
+          <div className="divDetails">
+            <a>Apartamento número {selected.number}</a>
+            <a
+              onClick={() => {
+                const copySelected = { ...selected };
+                if (copySelected.have_guest == 1) copySelected.have_guest = 0;
+                else copySelected.have_guest = 1;
+                setSelected(copySelected);
+              }}
+              className={`isOccupied ${
+                selected.have_guest == 1 ? "occupied" : "free"
+              }`}
+            >
+              {selected.have_guest == 1 ? "Ocupado" : "Livre"}
+            </a>
+            <form>
+              <a>Preço: </a>
+              <input
+                type="number"
+                step="any"
+                value={selected.price}
+                onChange={(event) => {
+                  const copySelected = { ...selected };
+                  copySelected.price = parseFloat(event.target.value);
+                  setSelected(copySelected);
+                }}
+              />
+            </form>
+            {selected.have_guest == 1 ? (
+              <>
+                <form>
+                  <a>Nome do hóspede: </a>
+                  <input
+                    step="any"
+                    value={selected.name_guest}
+                    onChange={(event) => {
+                      const copySelected = { ...selected };
+                      copySelected.name_guest = event.target.value;
+                      setSelected(copySelected);
+                    }}
+                  />
+                </form>
+                <form>
+                  <a>Contato do hóspede: </a>
+                  <input
+                    step="any"
+                    value={selected.contact_guest}
+                    onChange={(event) => {
+                      const copySelected = { ...selected };
+                      copySelected.contact_guest = event.target.value;
+                      setSelected(copySelected);
+                    }}
+                  />
+                </form>
+                <form>
+                  <a>
+                    Ficará livre em: {Math.floor(dif)} dias.
+                    <input
+                      type="date"
+                      onChange={(event) => {
+                        const copySelected = { ...selected };
+                        copySelected.busy_until = event.target.value;
+                        setSelected(copySelected);
+                      }}
+                    />
+                  </a>
+                </form>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+          <Button
+            className="buttonDetails"
+            onClick={() => {
+              api
+                .put(`apartment/${parseInt(selected.id)}`, selected)
+                .then(() => {
+                  toast.success("Alteração feita com sucesso.");
+                  requestApartments();
+                })
+                .catch(() => {
+                  toast.error("Ocorreu um erro, tente novamente.");
+                });
+            }}
+          >
+            Salvar
+          </Button>
+        </div>
       </div>
       <Toaster />
     </div>

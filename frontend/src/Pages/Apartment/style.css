@@ -43,6 +43,11 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+/* .selected {
+  border-width: 3px;
+  
+} */
 #containerUl {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +62,43 @@
 #containerApartments span {
   user-select: none;
 }
+.containerDetailsConfig {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.buttonDetails {
+  width: 150px;
+  height: 40px;
+}
 .divDetails {
   display: flex;
   flex-direction: column;
+  width: 50%;
+}
+.divDetails a {
+  user-select: none;
+}
+.isOccupied {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.occupied {
+  background-color: #f00;
+}
+.free {
+  background-color: #0f0;
+}
+
+.divDetails input {
+  border-width: 0px;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.77);
+  box-shadow: 2px 2px 2px rgba(50, 50, 50, 0.77);
 }

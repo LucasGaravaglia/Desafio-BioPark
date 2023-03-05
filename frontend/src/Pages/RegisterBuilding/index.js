@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import api from "../../Services/api";
 
 import Button from "../../Components/Button";
-import DefinePrices from "../../Components/DefinePrices";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 function Home() {
   const [nameBuilding, setNameBuilding] = useState("");
@@ -31,14 +31,12 @@ function Home() {
       }
     });
     tempArray.map((d) => {
-      console.log(d);
       api.post("apartment", {
         building_id: building_id,
         number: d.number,
         price: d.price,
       });
     });
-    console.log(tempArray);
     handlerConfirm();
   };
 
@@ -52,7 +50,7 @@ function Home() {
           setBuilding_id(d.data.id);
           setFlag(!flag);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => toast.error("Ocorreu um erro.", err));
     } else {
       setFlag(!flag);
       navigate("/");
@@ -130,6 +128,7 @@ function Home() {
           </div>
         </div>
       )}
+      <Toaster />
     </div>
   );
 }

@@ -19,8 +19,7 @@ function Building() {
         setBuildingData(res.data);
       })
       .catch((err) => {
-        toast.error("Falha ao fazer requisição.");
-        console.log(err);
+        toast.error("Falha ao fazer requisição.", err);
       });
   }, []);
 
@@ -31,7 +30,6 @@ function Building() {
       </div>
       <div id="buttons">
         {buildingData.map((data, key) => {
-          console.log(key);
           return (
             <Button
               className="customButtonBuilding"
