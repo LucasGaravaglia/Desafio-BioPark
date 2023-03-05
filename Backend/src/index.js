@@ -16,4 +16,4 @@ app.use(() => {
   error.status = 404;
 });
 
-app.listen(3333, () => console.log("Running application in port 3333 3333"));
+app.listen(3333, () => console.log("Running application in port 3333"));

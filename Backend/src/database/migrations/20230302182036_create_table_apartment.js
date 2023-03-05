@@ -1,4 +1,5 @@
 exports.up = (knex) => {
+  knex.schema.dropTableIfExists("apartments");
   return knex.schema.createTable("apartments", (table) => {
     table.increments("id");
     table.integer("number");
