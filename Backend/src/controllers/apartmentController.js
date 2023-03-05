@@ -1,7 +1,7 @@
 const knex = require("../database");
 
 module.exports = {
-  async index(req, res, next) {
+  async index(req, res) {
     const { building_id } = req.params;
     try {
       const query = knex("apartments");
@@ -11,10 +11,10 @@ module.exports = {
       const results = await query;
       return res.json(results);
     } catch (error) {
-      next(error);
+      return res.status(404).send(error);
     }
   },
-  async create(req, res, next) {
+  async create(req, res) {
     const {
       building_id,
       number,
@@ -36,12 +36,13 @@ module.exports = {
       });
       return res.status(201).send();
     } catch (error) {
-      next(error);
+      return res.status(404).send(error);
     }
   },
-  async update(req, res, next) {
+  async update(req, res) {
     const { have_guest, name_guest, contact_guest, busy_until } = req.body;
     const { id } = req.params;
+
     try {
       await knex("apartments")
         .update({
@@ -51,9 +52,11 @@ module.exports = {
           busy_until,
         })
         .where({ id });
+
       return res.status(201).send();
     } catch (error) {
-      next(error);
+      console.log(error);
+      return res.status(404).send(error);
     }
   },
 };

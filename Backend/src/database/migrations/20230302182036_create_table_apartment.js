@@ -11,7 +11,7 @@ exports.up = (knex) => {
     table.text("name_guest").default("");
     table.text("contact_guest").default("");
     table.double("price").default(0.0);
-    table.date("busy_until").default(knex.fn.now());
+    table.text("busy_until").default(knex.fn.now().toString());
   });
 };
 
