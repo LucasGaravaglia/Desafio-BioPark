@@ -139,7 +139,7 @@ function Building() {
               {selected.have_guest == 1 ? "Ocupado" : "Livre"}
             </a>
             <form>
-              <a>Preço: </a>
+              <a>Preço por mês: </a>
               <input
                 type="number"
                 step="any"
