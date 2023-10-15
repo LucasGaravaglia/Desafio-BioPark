@@ -2,7 +2,7 @@
 
 ## Configuração
 
-- Necessário a instalação:
+- Necessário a instalação :
   - Docker compose V:2.1
   - Nodejs V:18.8
 
